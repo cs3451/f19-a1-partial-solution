@@ -71,7 +71,7 @@ if (s3.camera) {
 // We also tilt the camera, to test that.
 var cam4 = new sg.Camera(25);
 cam4.position = new sg.Vector(0, 0, 200);
-cam4.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(0, 40, 0));
+cam4.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(-10, 40, 0));
 s4.world.add(cam4);
 // we move by -70.7 because after rotation by 45 degrees that's about what we have to move
 // to get the edge into the center (hint: cos(45 degrees) = ~0.707)
@@ -89,6 +89,14 @@ var n41 = new sg.HTMLDivThing(p41);
 n41.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(0, -90, 0));
 n41.position = new sg.Vector(100, 0, 100);
 n4.add(n41);
+var p4g = document.createElement("div");
+p4g.className = "panel image";
+p4g.style.backgroundImage = "url('./img/graph-paper.png')";
+var n4g = new sg.HTMLDivThing(p4g);
+n4g.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(-90, 0, 0));
+n4g.position = new sg.Vector(0, -100, 0);
+n4g.scale = new sg.Vector(2, 2, 2);
+n4.add(n4g);
 s4.render();
 if (s4.camera) {
     var m = s4.camera.worldInverseTransform.multiply(n41.worldTransform);

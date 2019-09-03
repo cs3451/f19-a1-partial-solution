@@ -5,6 +5,10 @@ using CSS3 transforms, and then create an animated story using a scene of DOM el
 
 ## Due: Thursday Sept 12th, 11:59pm
 
+## Author
+
+**Name:  PLEASE PUT YOUR NAME HERE**
+
 ## Overview 
 
 The assignment requires you to do three things:

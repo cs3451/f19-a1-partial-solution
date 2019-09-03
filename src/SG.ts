@@ -354,7 +354,7 @@ export class Scene {
         // update the matrices
         this.world.traverse(updateMatricies);
 
-        // WARNING:  HACK
+        // WARNING:  HACK I needed here
         // Typescript does not notice that traverse() is calling updateMatricies and that (therefore) this.camera might get
         // set.  So it narrows the type of this.camera to "null", this causes the next "if" to narrow "this.camera" to "never" 
         // (since that condition will never succeed).  
