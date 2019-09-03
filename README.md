@@ -16,8 +16,7 @@ You should submit your project using github classroom.  All of the code for the 
 
 ## The Scene Graph
 The graph's ```render()``` method will compute all of the transformations on the tree of "Things" (graph nodes), 
-and use it to set the full transformation on each HTML element in the graph;  
-you will **NOT** use any CSS 3D hierarchy for the elements.  
+and use it to set the full transformation on each HTML element in the graph;  you will **NOT** use any CSS 3D hierarchy for the elements.  
 
 You will create a module in src/SG.ts that implements a scene graph.  A skeleton of src/SG.ts is provided.
 
