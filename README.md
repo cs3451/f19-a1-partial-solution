@@ -7,10 +7,13 @@ using CSS3 transforms, and then create an animated story using a scene of DOM el
 
 ## Overview 
 
-The assignment requires you to do two things:
+The assignment requires you to do three things:
 
 1. Implement the scene graph library defined in src/SG.ts.  A number of the classes are partially defined, mostly providing an interface that you must implement.  
-2. Use the scene graph to create a simple "character" out of a hierarchy of 2D images (described further below), and then create an animated story using that character.
+2. Use the scene graph to create a simple "character" out of a hierarchy of 2D images (described further below), 
+3. Create an animated story using that character.
+
+The assignment will be graded out of 30;  each of the three parts of the assignment are worth equal amounts (10 points each).
 
 You should submit your project using github classroom.  All of the code for the scene graph should be in src/SG.ts, and your simple animated character scene should be in new index.html and src/app.ts files.  The tsconfig.json should be updated to include this new src/app.ts;  the TAs should be able to compile your files by running the ```tsc``` command and then open index.html to see your animated character.
 
