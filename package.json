@@ -1,0 +1,16 @@
+{
+  "name": "a1",
+  "version": "1.0.0",
+  "description": "Sample for Assignment 1, CS3451, Fall 2019",
+  "dependencies": {},
+  "devDependencies": {
+    "https-localhost": "^4.1.3",
+    "http-server": "0.11.1",
+    "typescript": "^3.6"
+  },
+  "scripts": {
+    "http": "http-server"
+  },
+  "author": "Blair MacIntyre <blair@cc.gatech.edu>",
+  "license": "CC BY-SA 4.0"
+}

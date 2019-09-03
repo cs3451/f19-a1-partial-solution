@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  
+  <!-- disable zooming -->
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=0" />
+  
+  <title>Examples of Transforms</title>
+
+  <link rel="stylesheet" href="includes/style.css" media="screen" />
+    
+  <style media="screen">
+    .container {
+      width: 198px;
+      height: 198px;
+      border: 1px solid #CCC;
+      margin: 0 auto 60px;
+      position: relative;
+      overflow: visible;
+      -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+           -o-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+    }
+
+    .panel {
+      width: 192px;
+      height: 192px;
+      position: absolute;
+      opacity: 0.7;
+      border: 4px solid black;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      background: red;
+      
+      -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+           -o-transform-style: preserve-3d;
+              transform-style: preserve-3d;      
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <h1>Examples of Transforms</h1>
+
+  <div id="result1">....</div>  
+  <div id="translate-z-negative" class="container">
+  </div>
+  
+<div id="result2">....</div>
+  <div id="translate-z-positive" class="container">
+  </div>
+
+  <div id="result3">....</div>
+  <div id="rotate-x" class="container">
+  </div>
+
+  <div id="result4">....</div>
+  <div id="rotate-y" class="container">
+  </div>
+
+  <div id="result5">....</div>
+  <div id="rotate-z" class="container">
+  </div>
+    
+  <div id="result6">....</div>
+
+  <script type="module" src="js/ex2.js"></script>
+  
+  <p class="footer">Ideas for examples taken from tutorial code at the <a href="https://github.com/desandro/3dtransforms">3DTransforms</a> project on github.</p>
+
+</body>
+</html>
