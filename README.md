@@ -78,7 +78,7 @@ Below is a checklist of elements that you must include in your scene:
 
 You will probably want to use a “time” variable to help control motion of your objects.  "time" could count frames, or it could be based on clock time, as you prefer.  
 
-In addition to changing the transform of objects based on time, you can add and remote scene graph elements over time as well. 
+In addition to changing the transform of objects based on time, you can add and remove scene graph elements over time as well. 
 
 Pay attention to the size of any images you include:  keep them reasonable (e.g., under 1000 pixels width and height) so that the project is not excessively big. 
 
