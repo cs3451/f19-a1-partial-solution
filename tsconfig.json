@@ -12,6 +12,7 @@
 	"files": [
 		"src/ex1.ts",
 		"src/ex2.ts",
+		"src/app.ts",
 		"src/SG.ts"
 	]
 }

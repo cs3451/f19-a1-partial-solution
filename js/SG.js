@@ -216,7 +216,7 @@ export class Scene {
         this.world = new Thing();
         this.camera = null;
         this.domElement = document.createElement('div');
-        //this.container.style.overflow = 'hidden';
+        this.container.style.overflow = 'hidden';
         this.domElement.style.transformStyle = "preserve-3d";
         this.container.appendChild(this.domElement);
         var rect = container.getBoundingClientRect();

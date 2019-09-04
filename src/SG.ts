@@ -296,7 +296,7 @@ export class Scene {
         this.camera = null;
 
         this.domElement = document.createElement( 'div' );
-        //this.container.style.overflow = 'hidden';
+        this.container.style.overflow = 'hidden';
 
         this.domElement.style.transformStyle = "preserve-3d";
         this.container.appendChild(this.domElement);
@@ -334,7 +334,6 @@ export class Scene {
 		')';
 	};
 
-    
     render() {  
         // a function to traverse the graph, updating the matrices
         var updateMatricies = (obj: Thing) => {
