@@ -18,10 +18,7 @@
       margin: 0 auto 60px;
       position: relative;
       overflow: visible;
-      -webkit-transform-style: preserve-3d;
-         -moz-transform-style: preserve-3d;
-           -o-transform-style: preserve-3d;
-              transform-style: preserve-3d;
+      transform-style: preserve-3d;
     }
 
     .panel {
@@ -34,12 +31,8 @@
       font-weight: bold;
       color: white;
       text-align: center;
-      background: red;
-      
-      -webkit-transform-style: preserve-3d;
-         -moz-transform-style: preserve-3d;
-           -o-transform-style: preserve-3d;
-              transform-style: preserve-3d;      
+      background: red;      
+      transform-style: preserve-3d;      
     }
 
     .image {
@@ -53,29 +46,77 @@
 <body>
 
   <h1>Examples of Transforms</h1>
-
-  <div id="result1">....</div>  
   <div id="translate-z-negative" class="container">
   </div>
-  
-<div id="result2">....</div>
+
+  <div id="result1">....</div>  
+  <div><br>Should be:<br>n1 position = [100, -100, -1000]</div>
   <div id="translate-z-positive" class="container">
   </div>
 
-  <div id="result3">....</div>
+<div id="result2">....</div>
+  <div><br>Should be:<br>n2 position = [0, 0, -451]</div>
   <div id="rotate-x" class="container">
   </div>
 
-  <div id="result4">....</div>
+  <div id="result3">....</div>
+  <div><br>Should be:<br>n3 matrix = [1, 0, 0, 0,<br>
+    0, 0.8191520442889918, -0.573576436351046, 0,<br>
+    0, 0.573576436351046, 0.8191520442889918, 0,<br>
+    0, 0, 0, 1]<br>
+    n3 worldMatrix = [1, 0, 0, 0,<br>
+    0, 0.8191520442889918, -0.573576436351046, 0,<br>
+    0, 0.573576436351046, 0.8191520442889918, -750,<br>
+    0, 0, 0, 1]</div>
   <div id="rotate-y" class="container">
   </div>
 
-  <div id="result5">....</div>
+  <div id="result4">....</div>
+  <div><br>Should be:<br>n4 matrix = [0.7071067811865476, 0, 0.7071067811865475, -70.7,<br>
+0, 1, 0, 0,<br>
+-0.7071067811865475, 0, 0.7071067811865476, 0,<br>
+0, 0, 0, 1]<br>
+n41 matrix = [0.7071067811865475, 0, -0.7071067811865476, 70.72135623730951,<br>
+0, 1, 0, 0,<br>
+0.7071067811865476, 0, 0.7071067811865475, 1.4210854715202004e-14,<br>
+0, 0, 0, 1]<br>
+n41 worldMatrix = [0.5754418589960313, -0.030153689607045803, -0.8172866216440066, 110.98959091579192,<br>
+-0.12278780396897285, 0.984807753012208, -0.12278780396897282, 40.43776683232346,<br>
+0.8085727067565839, 0.17101007166283433, 0.5629970988186381, -798.0622386145972,<br>
+0, 0, 0, 1]
+</div>
   <div id="rotate-z" class="container">
   </div>
-    
-  <div id="result6">....</div>
 
+  <div id="result5">....</div>
+  <div><br>Should be:<br>LEFT:<br>
+    n5 matrix = [0.8180294248815739, -0.5727903697794315, 0.052335956242943835, 0,<br>
+    0.573576436351046, 0.8191520442889918, 0, 0,<br>
+    -0.04287110554622667, 0.030018671274852006, 0.9986295347545738, -1000,<br>
+    0, 0, 0, 1]<br>
+    n5 worldMatrix = [0.8090669233189091, -0.5665147586240373, -0.15643446504023087, 207.91169081775934,<br>
+    0.573576436351046, 0.8191520442889918, 0, 0,<br>
+    0.12814361183495993, -0.08972712298025791, 0.9876883405951377, -978.1476007338057,<br>
+    0, 0, 0, 1]<br>
+    MIDDLE:<br>
+    n5 matrix = [-0.8180294248815739, 0.5727903697794315, -0.05233595624294356, 0,<br>
+    0.573576436351046, 0.8191520442889918, 0, 0,<br>
+    0.04287110554622644, -0.030018671274851846, -0.9986295347545738, -1000,<br>
+    0, 0, 0, 1]<br>
+    n5 worldMatrix = [-0.8180294248815739, 0.5727903697794315, -0.0523359562429434, 1.5986063949206228e-13,<br>
+    0.573576436351046, 0.8191520442889918, 0, 0,<br>
+    0.04287110554622631, -0.030018671274851756, -0.9986295347545738, -1000,<br>
+    0, 0, 0, 1]<br>
+    RIGHT:<br>
+    n5 matrix = [0.8090669233189091, -0.5665147586240372, -0.15643446504023112, 0,<br>
+    0.573576436351046, 0.8191520442889918, 0, 0,<br>
+    0.12814361183496015, -0.08972712298025806, 0.9876883405951377, -1000,<br>
+    0, 0, 0, 1]<br>
+    n5 worldMatrix = [0.8185482607599402, -0.5731536625725573, 0.03838780908751943, -194.23435121997173,<br>
+    0.573576436351046, 0.8191520442889918, 0, 0,<br>
+    -0.0314454522898171, 0.022018342735743685, 0.9992629164106211, -980.9551553491916,<br>
+    0, 0, 0, 1]</div>
+    
   <script type="module" src="js/ex2.js"></script>
   
   <p class="footer">Ideas for examples taken from tutorial code at the <a href="https://github.com/desandro/3dtransforms">3DTransforms</a> project on github.</p>

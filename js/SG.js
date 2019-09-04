@@ -216,7 +216,7 @@ export class Scene {
         this.world = new Thing();
         this.camera = null;
         this.domElement = document.createElement('div');
-        //this.domElement.style.overflow = 'hidden';
+        //this.container.style.overflow = 'hidden';
         this.domElement.style.transformStyle = "preserve-3d";
         this.container.appendChild(this.domElement);
         var rect = container.getBoundingClientRect();
@@ -224,11 +224,12 @@ export class Scene {
         this.height = rect.height;
         this.domElement.style.width = this.width + 'px';
         this.domElement.style.height = this.height + 'px';
-        this.domElement.style.transform = "matrix3d(1,0,0,0, 0,-1,0,0, 0,0,1,0, 0,0,0,1)";
+        this.windowTransform = "matrix3d(1,0,0,0, 0,-1,0,0, 0,0,1,0, 0,0,0,1)" +
+            " translate3d(" + this.width / 2 + 'px, ' + this.height / 2 + 'px, 0px)';
     }
     getObjectCSSMatrix(m) {
         var elements = m.elements;
-        return 'matrix3d(' +
+        return 'translate3d(-50%, -50%, 0) matrix3d(' +
             epsilon(elements[0]) + ',' +
             epsilon(elements[1]) + ',' +
             epsilon(elements[2]) + ',' +
@@ -282,8 +283,9 @@ export class Scene {
                     this.camera.worldInverseTransform.multiply(cp.inverseTransform);
                 cp = cp.parent;
             }
-            var focalLength = this.camera.getFocalLength(this.height);
-            this.domElement.style.perspective = focalLength.toString() + "px";
+            var focalLength = this.camera.getFocalLength(this.height).toString();
+            this.container.style.perspective = focalLength + "px";
+            this.domElement.style.transform = "translate3d(0px,0px," + focalLength + "px)" + this.windowTransform;
         }
         // set transform of each object to camera.wIT * obj.iT
         var renderThings = (obj) => {

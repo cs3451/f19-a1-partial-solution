@@ -18,20 +18,20 @@ var res6 = <HTMLDivElement>document.getElementById("result6");
 ///////////////////////////////////
 // Scene 1.
 
-// the camera is 25 degrees;  should result in a focal length of ~450 or so, based on a 200 pixel 
-// square container.  We'll move it off center, to test
+// Move the camera back, and up half the size of the panel.  The upper left corner
+// of the panel should be at the center of the viewport.
 var cam1 = new sg.Camera(25);
-cam1.position = new sg.Vector(-100,50,200); 
+cam1.position = new sg.Vector(-100,100,0); 
 s1.world.add(cam1);
 
 // create a div for our content
 var p1 = document.createElement("div");
 p1.className = "panel";
-p1.innerText = "transZ(-200px)\n\ncamera trans(-100,\n50,200)";
+p1.innerText = "transZ(-1000px)\n\ncamera trans(-100,\n100,0)";
 
 // put the div in the scene graph, pushed out a bit further down the z axis
 var n1 = new sg.HTMLDivThing(p1);
-n1.position = new sg.Vector(0,0,-200); 
+n1.position = new sg.Vector(0,0,-1000); 
 s1.world.add(n1);
 
 // render this graph into the div container.
@@ -44,15 +44,18 @@ if (s1.camera) {
 
 ///////////////////////////////////
 // Scene 2
+//
+// the camera is 25 degrees;  should result in a focal length of ~450 or so, based on a 200 pixel 
+// square container.  We'll move it that far back, so the 200x200 panel should fill the viewport
 var cam2 = new sg.Camera(25);
-cam2.position = new sg.Vector(0,0,200); 
+cam2.position = new sg.Vector(0,0,451); 
 s2.world.add(cam2);
 
 var p2 = document.createElement("div");
 p2.className = "panel";
-p2.innerText = "transZ(200px)";
+p2.innerText = "camera\ntransZ(451px)";
 var n2 = new sg.HTMLDivThing(p2);
-n2.position = new sg.Vector(0,0,200); 
+n2.position = new sg.Vector(0,0,0); 
 s2.world.add(n2);
 
 s2.render();
@@ -64,8 +67,11 @@ if (s2.camera) {
 
 ///////////////////////////////////
 // Scene 3
+//
+// Move back, and rotate around positive X.  Top edge should be closer to screen.
+
 var cam3 = new sg.Camera(25);
-cam3.position = new sg.Vector(0,0,200); 
+cam3.position = new sg.Vector(0,0,750); 
 s3.world.add(cam3);
 
 var p3 = document.createElement("div");
@@ -84,11 +90,16 @@ if (s3.camera) {
 }
 
 ///////////////////////////////////
-// Scene 4.  Two panels, set up so they are at 90 degrees to each other along an edge.
+// Scene 4.  
+//
+// More complex scene.  Two red panels, set up so they are at 90 degrees to each 
+// other along an edge.  One image panel under them.
+//
 // We also tilt the camera, to test that.
+
 var cam4 = new sg.Camera(25);
-cam4.position = new sg.Vector(0,0,200); 
-cam4.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(-10,40,0));
+cam4.position = new sg.Vector(100,100,800); 
+cam4.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(-10,10,0));
 s4.world.add(cam4);
 
 // we move by -70.7 because after rotation by 45 degrees that's about what we have to move
@@ -130,7 +141,7 @@ if (s4.camera) {
 ///////////////////////////////////
 // Scene 5.  Till in Z, spin in X, and rotate the camera back and forth
 var cam5 = new sg.Camera(25);
-cam5.position = new sg.Vector(0,0,200); 
+cam5.position = new sg.Vector(0,0,0); 
 s5.world.add(cam5);
 
 var p5 = document.createElement("div");
@@ -138,11 +149,12 @@ p5.className = "panel";
 p5.innerText = "rotateZ( 35deg )";
 var n5 = new sg.HTMLDivThing(p5);
 n5.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(0,0,35)); 
+n5.position = new sg.Vector(0,0,-1000);
 s5.world.add(n5);
 
 var yRotation = 0;
-var camYRotation =20;
-var camYInc = 1;
+var camYRotation =12;
+var camYInc = 0.2;
 
 var str1 = "LEFT:\n\n";
 var str2 = "MIDDLE:\n\n";
@@ -156,7 +168,8 @@ var s5renderFunc = function() {
 	n5.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(0,yRotation,35)); 
 	
 	camYRotation += camYInc;
-	if (camYRotation > 30 || camYRotation < -30) {
+	if (camYRotation > 12 || camYRotation < -12) {
+		camYRotation -= camYInc;
 		camYInc *= -1;
 	}
 	cam5.rotation = sg.Matrix.makeRotationFromEuler(new sg.Vector(0,camYRotation,0));
@@ -165,15 +178,15 @@ var s5renderFunc = function() {
 	
 	if (s5.camera) {
 		var m = s5.camera.worldInverseTransform.multiply(n5.worldTransform);              
-		if (camYRotation > 30 && str1.length < 20) {
+		if (camYRotation > 11 && str1.length < 20) {
 			str1 = "LEFT:\n n5 matrix = " + n5.worldTransform.toString() + "\n" + 
 				"n5 worldMatrix = " + m.toString() + "\n";
 			res5.innerText = str1 + str2 + str3;
-		} else if (camYRotation < -30 && str3.length < 20) {
+		} else if (camYRotation < -11 && str3.length < 20) {
 			str3 = "RIGHT:\n n5 matrix = " + n5.worldTransform.toString() + "\n" + 
 				"n5 worldMatrix = " + m.toString() + "\n" ;
 			res5.innerText = str1 + str2 + str3;
-		} else if (camYRotation == 0 && str2.length < 20) {
+		} else if (camYRotation > -0.1 && camYRotation < 0.1  && str2.length < 20) {
 			str2 = "MIDDLE:\n n5 matrix = " + n5.worldTransform.toString() + "\n" + 
 				"n5 worldMatrix = " + m.toString() + "\n";
 			res5.innerText = str1 + str2 + str3;
