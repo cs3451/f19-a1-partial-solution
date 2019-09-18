@@ -254,7 +254,7 @@ export class Scene {
         var updateMatricies = (obj) => {
             obj.computeTransforms();
             if (obj.parent) {
-                obj.worldTransform = obj.parent.transform.multiply(obj.transform);
+                obj.worldTransform = obj.parent.worldTransform.multiply(obj.transform);
             }
             else {
                 obj.worldTransform = obj.transform;
